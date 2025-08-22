@@ -1,49 +1,85 @@
-# Simple Login System
+# Login Management System
 
-Welcome to the Simple Login System project. This project, written in C, provides a basic framework for user authentication. It includes functionalities such as signup, login, password recovery, password change, and account deletion. User data is stored in a file named 'account.txt'.
+## Objective
 
-## Getting Started
+This C project implements a console-based login management system. It allows users to create accounts, log in, recover forgotten usernames or passwords, change passwords, and delete accounts. The system uses file-based storage to persist account data.
 
-These instructions will help you get a copy of the project up and running on your local machine.
+### Skills Learned
 
-### Prerequisites
+* Implementing account creation and login systems.
+* Handling file operations in C (`fopen`, `fread`, `fwrite`).
+* Masking password input using `getch()`.
+* Basic input validation and error handling.
+* Structuring C programs with modular functions.
 
-To use this project, you need to have the GCC compiler installed on your system.
+### Tools Used
 
-### Installation
+* C programming language
+* Windows console (using `conio.h` and `windows.h`)
+* File-based storage for persistence (`.txt` file)
 
-Once you have the GCC compiler installed, you can compile the source code using the following command:
+## File Structure
 
-```bash
-gcc -o login login.c
+```
+Login-Management-System/
+│
+├─ main.c                 # Main program file containing all functions
+├─ account.txt            # Stores user account data
+└─ README.md              # Project documentation
 ```
 
-This command will create an executable file named 'login'. 
+## Steps
 
-### Running the Program
+1. **Compile the program:**
 
-You can run this file using the following command:
+   Using GCC:
 
-```bash
-./login
-```
+   ```bash
+   gcc LOGIN.c -o main
+   ```
 
-## Features
+2. **Run the application:**
 
-After running the program, you will be presented with a menu. You can navigate the menu using the arrow keys and select an option by pressing the Enter key. The program provides the following functionalities:
+   ```bash
+   ./main
+   ```
 
-- **Signup**: Register a new user by providing their personal information and setting a password.
-- **Login**: Log in using an existing username and password.
-- **Forgot Password or Username**: Retrieve your username or password.
-- **Change Password**: Update your password.
-- **Delete Account**: Delete your account permanently.
-- **Exit**: Close the program.
+3. **Navigate the CLI menus:**
 
-## License
+   * **Signup**: Create a new account with first name, last name, username, phone, gender, date of birth, and password.
+   * **Login**: Access your account using username and password.
+   * **Forgot Password/Username**: Recover your account details.
+   * **Change Password**: Securely update your password using a random verification code.
+   * **Delete Account**: Permanently delete your account.
 
-This project is licensed under the MIT License.
+4. **Password Handling:**
 
-## Acknowledgments and Warning
+   * Passwords are masked using `*` during input.
+   * Confirmation is required during account creation and password change.
 
-This project is a simple demonstration of a login system. It does not provide comprehensive security features such as hashing and salting passwords, two-factor authentication, or encryption. Please note that storing sensitive information in plain text can pose significant security risks. It is highly recommended to implement robust security measures when dealing with real-world user data.
+5. **File-Based Storage:**
+
+   * All account data is stored in `account.txt`.
+   * The system reads from and writes to this file to persist user accounts.
+
+6. **Error Handling:**
+
+   * Checks for incorrect usernames or passwords.
+   * Provides recovery options and verification codes for password changes.
+   * Prevents deletion without confirmation.
+
+## ⚠️ Security Warning
+
+* This application stores passwords in **plain text**. There is **no encryption or hashing**.
+* Do **not use any sensitive or real credentials** while testing this application.
+* This project is intended **for educational purposes only** to demonstrate file handling, user input, and basic account management in C.
+
+## Future Improvements
+
+* **Password Encryption/Hashing**: Use secure hashing algorithms like SHA-256 or bcrypt to store passwords instead of plain text.
+* **Multi-User Support**: Allow multiple accounts to be stored and managed concurrently.
+* **Role-Based Access**: Implement roles like admin, staff, or user to control access to certain functions.
+* **Improved File Storage**: Use structured storage formats like JSON or SQLite instead of plain text for better data management.
+* **Input Validation**: Add stricter checks for phone numbers, usernames, and passwords to prevent invalid entries.
+* **Cross-Platform Compatibility**: Remove Windows-specific headers (`conio.h`, `windows.h`) to make the system portable across platforms.
 
